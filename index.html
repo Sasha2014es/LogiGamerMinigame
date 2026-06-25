@@ -57,83 +57,51 @@
             background: #673ab7;
             transform: scale(1.1);
         }  
-            .container{
-    width:400px;
-    background:#1e293b;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,0,0,.4);
+           h1 { text-align: center; font-size: 3rem; margin: 20px 0; }
+h2 { text-align: center; color: #673ab7; margin-top: 40px; }
+
+/* Стиль ігрових контейнерів */
+.game-container {
+    background: #1e1e1e; /* Темно-сірий замість градієнта */
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    margin: 20px auto;
+    transition: 0.3s;
 }
 
-.tabs{
-    display:flex;
-    margin-bottom:20px;
+.game-container:hover {
+    border-color: #673ab7;
 }
 
-.tabs button{
-    flex:1;
-    padding:12px;
-    border:none;
-    cursor:pointer;
-    background:#334155;
-    color:white;
-}
-
-.tabs button.active{
-    background:#3b82f6;
-}
-
-h2{
-    color:white;
-    margin-bottom:15px;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:12px;
-    border:none;
-    border-radius:8px;
-}
-
-button[type="submit"]{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-}
-
-button[type="submit"]:hover{
-    background:#2563eb;
-}
-
-.hidden{
-    display:none;
-}
-
-#message{
-    text-align:center;
-    margin-bottom:15px;
-    font-weight:bold;
-}
-
-.success{
-    color:#22c55e;
-}
-
-.error{
-    color:#ef4444;
-}
- .logo {
+/* Кнопки */
+button, .fx-button {
+    background: #673ab7;
     color: white;
-    font-size: 4rem; /* Великий розмір */
-    font-weight: bold;
-    font-family: sans-serif;
-    white-space: nowrap; /* Щоб не переносилося */
-    padding-right: px;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #8e44ad;
+    transform: scale(1.05);
+}
+
+/* Колесо фортуни */
+#wheel {
+    border: 8px solid #333 !important;
+}
+.embed-container {
+    display: flex;         /* Включаємо Flexbox */
+    justify-content: center; /* Центруємо по горизонталі */
+    align-items: center;     /* Центруємо по вертикалі (якщо потрібно) */
+    margin: 30px 0;          /* Додаємо трохи відступів зверху і знизу */
+    width: 100%;             /* Займає всю ширину */
 }
 
         /* Ефект падаючих частинок */
