@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <title>LogiGamer</title>
+        <style>
+            body {
+                background-color: orange; /* Default background color */
+                overflow-x: hidden; /* Hide horizontal scrollbar if particles go outside */
+            }
+
+            #particle-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none; /* Make particles not interact with mouse events */
+                z-index: -1; /* Put the particles behind the content */
+            }
+
+            .particle {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent color */
+                border-radius: 50%; /* Make particles round */
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh); /* Move to the bottom of the screen */
+                }
+            }
+            
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #121212; color: white; overflow-x: hidden; }
+
+        /* Стильна навігація */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        nav a {
+            color: #bbb;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: 0.3s;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+        nav a:hover {
+            color: #fff;
+            background: #673ab7;
+            transform: scale(1.1);
+        }
+
+        /* Ефект падаючих частинок */
+        #particle-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .particle { position: absolute; background-color: rgba(103, 58, 183, 0.6); border-radius: 50%; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+    
+        </style>
+    </head>
+    <body>
+        <h1>LogiGamer</h1>
+        <nav>
+            <a href="#">Увійти</a>
+            <a href="#">Головна сторінка</a>
+            <a href="#">Екшн</a>
+            <a href="#">RPG</a>
+            <a href="#">Стратегії</a>
+            <a href="#">Симулятори</a>
+            <a href="#">Пригоди</a>
+            <a href="#">Аркади</a>
+            <a href="#">Головоломки</a>
+            <a href="#">Міні гра</a>
+            <a href="https://t.me/LogiGamerbot">Підтримка</a>
+        </nav> 
+        <header>
+            <h2>Game 1(Колесо фортуни(мініказино))</h2>
+            <div style="text-align: center; font-family: sans-serif; margin: 20px auto; max-width: 300px;">
+                <div style="position: relative; width: 200px; height: 200px; margin: 0 auto;">
+                    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 20px solid red; z-index: 10;"></div>
+                    <div id="wheel" style="width: 100%; height: 100%; border-radius: 50%; border: 5px solid #333; background: conic-gradient(#ffcdd2 0% 25%, #c8e6c9 25% 50%, #bbdefb 50% 75%, #ffe0b2 75% 100%); transition: transform 3s cubic-bezier(0.1, 0.8, 0.3, 1);"></div>
+                </div>
+                <button id="spin-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background: #673ab7; color: white; border: none; border-radius: 5px; cursor: pointer;">Крутити! 🎰</button>
+                <p id="wheel-result" style="font-weight: bold; margin-top: 10px; min-height: 20px;"></p>
+            </div>
+            <script>
+                const wheel = document.getElementById('wheel');
+                const spinBtn = document.getElementById('spin-btn');
+                const resultText = document.getElementById('wheel-result');
+
+                // Назви секторів за годинниковою стрілкою
+                const sectors = ["ультра легендарного геймера Зеленського", "100 гривень на стім", "Бан в стім", "10 гривень на стім"];
+                let currentRotation = 0;
+
+                spinBtn.addEventListener('click', () => {
+                    resultText.textContent = "Колесо крутиться...";
+                    spinBtn.disabled = true;
+
+                    // Генеруємо випадковий кут (мінімум 3 повних оберти + випадковий залишок)
+                    const randomDegrees = Math.floor(Math.random() * 360);
+                    currentRotation += 1080 + randomDegrees; 
+
+                    wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+                    // Чекаємо завершення анімації (3 секунди)
+                    setTimeout(() => {
+                        spinBtn.disabled = false;
+                        
+                        // Рахуємо який сектор випав (враховуючи, що стрілка вгорі — це 0 градусів)
+                        const actualDegrees = (360 - (currentRotation % 360)) % 360;
+                        const sectorIndex = Math.floor(actualDegrees / (360 / sectors.length));
+                        
+                        resultText.textContent = `Ви виграли: ${sectors[sectorIndex]}!`;
+                    }, 3000);
+                });
+            </script>
+            <h2>Game 2(земля в алюмінаторі)</h2>
+            <audio id="mars-bg-audio" loop>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            </audio>
+            <div style="text-align: center; margin: 20px;">
+                <button onclick="controlMusic()" id="music-btn" class="fx-button">
+                    📡 Увімкнути зв'язок з Землею (Звук)
+                </button>
+            </div>
+            <script>
+                function playRadioGlitch() {
+                    const glitch = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
+                    glitch.volume = 0.2;
+                    glitch.play();
+                }
+
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', playRadioGlitch);
+                });
+
+                function controlMusic() {
+                    const audio = document.getElementById('mars-bg-audio');
+                    const btn = document.getElementById('music-btn');
+
+                    if (audio.paused) {
+                        audio.play();
+                        btn.innerText = "🔇 Вимкнути аудіо-модуль";
+                        btn.style.background = "linear-gradient(45deg, #444, #222)";
+                    } else {
+                        audio.pause();
+                        btn.innerText = "📡 Увімкнути зв'язок з Землею (Звук)";
+                        btn.style.background = "linear-gradient(45deg, #ff4500, #ff8c00)";
+                    }
+                }
+            </script>
+        </header>  
+        <main>
+            <h2>Game 3(Стім клікер)</h2>
+            <div class="game-container" style="text-align: center; font-family: sans-serif; padding: 20px; border: 2px solid #ccc; max-width: 300px; margin: 20px auto;">
+                <h3>Інтернет клікер 🕹️ </h3>
+                <p>Грошей в стім: <span id="score" style="font-weight: bold; font-size: 20px;">0</span></p>
+                <button id="click-btn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #191f1b; color: white; border: none; border-radius: 5px;">Клікни мене!</button>
+            </div>
+            <script>
+                let count = 0;
+                const scoreSpan = document.getElementById('score');
+                const clickBtn = document.getElementById('click-btn');
+
+                clickBtn.addEventListener('click', () => {
+                    count++;
+                    scoreSpan.textContent = count;
+                    
+                    // Маленький ефект анімації при кліку
+                    clickBtn.style.transform = 'scale(0.95)';
+                    setTimeout(() => clickBtn.style.transform = 'scale(1)', 100);
+                });
+            </script>
+        </main>
+        <footer>
+            <div id="particle-container"></div>
+            <script>
+                function createParticle() {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.width = Math.random() * 5 + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random animation duration
+                    document.getElementById('particle-container').appendChild(particle);
+
+                    setTimeout(() => {
+                        particle.remove();
+                    }, parseFloat(particle.style.animationDuration) * 1000);
+                }
+
+                setInterval(createParticle, 100); // Create particles every 100ms
+            </script>
+            <h2>Game 4(Майн урон)</h2>
+            <div class="embed-container">
+                
+    <iframe width="110" height="200" src="https://www.myinstants.com/instant/minecraft-damage-6455/embed/" frameborder="0" scrolling="no"></iframe>
+</div>
+        </footer>
+    </body>
+</html>
+
+
+
+
+
