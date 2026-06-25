@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212; /* Темний фон */
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Навігація в стилі LogiGamer */
+nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(20, 20, 20, 0.95);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #333;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    color: #fff;
+    background: #673ab7; /* Фіолетовий акцент */
+}
+
+/* Заголовки */
+h1 { text-align: center; font-size: 3rem; margin: 20px 0; }
+h2 { text-align: center; color: #673ab7; margin-top: 40px; }
+
+/* Стиль ігрових контейнерів */
+.game-container {
+    background: #1e1e1e; /* Темно-сірий замість градієнта */
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    margin: 20px auto;
+    transition: 0.3s;
+}
+
+.game-container:hover {
+    border-color: #673ab7;
+}
+
+/* Кнопки */
+button, .fx-button {
+    background: #673ab7;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #8e44ad;
+    transform: scale(1.05);
+}
+
+/* Колесо фортуни */
+#wheel {
+    border: 8px solid #333 !important;
+}
+.embed-container {
+    display: flex;         /* Включаємо Flexbox */
+    justify-content: center; /* Центруємо по горизонталі */
+    align-items: center;     /* Центруємо по вертикалі (якщо потрібно) */
+    margin: 30px 0;          /* Додаємо трохи відступів зверху і знизу */
+    width: 100%;             /* Займає всю ширину */
+}
+
